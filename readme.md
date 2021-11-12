@@ -29,12 +29,14 @@ mapbox for interactive point detection/display?
 I would ingest the APIS ability to get point information and ingest that information into my database along with other information.
 I would also use the APIS ability to dispaly information
 
-![[map_page.jpg]]
 
 ## API EXAMPLE:
 
-GETTING MOUSE COORDINATES:
-```
+
+### GETTING MOUSE COORDINATES:
+
+
+```javascript
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHJ5dXRzdW4iLCJhIjoiY2t2dTc1cDQxM21laTJwcWd6bHE3NXk0aSJ9.0_oLKZMzGfSgG7UxPJvf_w';
 const map = new mapboxgl.Map({
 container: 'map', // container id
@@ -42,7 +44,6 @@ style: 'mapbox://styles/mapbox/streets-v11',
 center: [-74.5, 40], // starting position
 zoom: 9 // starting zoom
 });
- 
 map.on('mousemove', (e) => {
 document.getElementById('info').innerHTML =
 // `e.point` is the x, y coordinates of the `mousemove` event
@@ -52,13 +53,13 @@ JSON.stringify(e.point) +
 // `e.lngLat` is the longitude, latitude geographical position of the event.
 JSON.stringify(e.lngLat.wrap());
 });
-'``
+```
 
 This will return geo-coordinates from the mapbox object.
 
-GETTING POPUP MODALS:
+### GETTING POPUP MODALS:
 
-```
+```javascript
 const markerHeight = 50;
 const markerRadius = 10;
 const linearOffset = 25;
@@ -79,9 +80,8 @@ const popup = new mapboxgl.Popup({offset: popupOffsets, className: 'my-class'})
 This will create popup modals on the mapbox object.
 
 
-ADDING POPUPS:
-
-```
+### ADDING POPUPS TO MAP
+```javascript
 new mapboxgl.Popup()
 .setLngLat([0, 0])
 .setHTML("<h1>Null Island</h1>")
@@ -89,9 +89,6 @@ new mapboxgl.Popup()
 ```
 
 This will add popups to the map.
-
-
-
 
 
 
@@ -109,10 +106,13 @@ This will add popups to the map.
 
 
 ## MVP:
-- [ ]  I would like to have my models and route stubs created. Forms should display the correct information.
+- [ ]  I would like to have my models and route stubs created. Forms should display the correct information. Each view should fulfill the user story for navigation.
 - [ ]  I would like the map to display the "event" on the map. This events should have popup modals and be represented by a certain icon.
-- [ ]  I would like some rudimentary time-related slider / timeline functionality.
+- [ ]  I would like some rudimentary time-related slider / timeline functionality in order to see locations over time...
 - [ ]  Ideally, I would like for the user to be able to click on the screen and get lat-lon data for data entry. This should be put into the form.
+- [ ]  Users should be able to perform full CRUD operations in their respective views.
+- [ ]  I would like it to be pretty and portfolio ready.
+
 
 ## STRETCH GOALS
 - Possible translation of relational data into graph schema to render a force directed graph into canvas (to show the node to line relationship between events and entities? No fancy stuff, just want to see if it is possible. Will not require external API call.
@@ -129,15 +129,21 @@ This will add popups to the map.
 
 
 
-## ROUTE ARCHITECTURE
-- Main Index Page will be an index of all user projects
-- If user clicks on a particular project they should be directed to a project page
-	- This project page should have a form to enter in new data
-	- When the user submits, it should refresh the page and display the new information
-- If the user clicks on a certain marker, it should display some sort of modal data relating to the "title" "association" "entityid" "sourcedata" and "comments" OR If the user clicks on a certain maker, It should send the user to the page of that particular datapoint
-- title
+## ROUTE ARCHITECTURE / USER STORIES
 
-## USER STORIES
+
+User flow hasn't been fully sketched up but this is what I'm thinking so far.
+
+### SITE NAVIGATION
+- Main Index Page will be an index of all user projects
+- If user clicks on a particular project they should be directed to an individual project page
+	- This project page should have a form to enter in new data, it should display a map
+	- When the user submits, it should refresh the page and display the new information. From a UX perspective, there should probably be some sort of toggle to determine whether or not data fields should be clickable.
+- If the user clicks on a certain pre-existing marker, it should display some sort of modal data relating to the "title" "association" "entityid" "sourcedata" and "comments" OR - If the user clicks on a certain maker, It should send the user to the page of that particular datapoint (individual view)
+
+### TIMELINE NAVIGATION
+- I would like users to click on the timeline and get the corresponding marker/popup information.
+- The popups/markers should only appear at certain time makers, and should only display on the map if the user specifies that time marker via clicking.
 
 
 
