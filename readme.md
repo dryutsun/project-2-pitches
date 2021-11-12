@@ -13,11 +13,6 @@ An implementation of the the timemap software developed by FA but in the PEN sta
 - d3js
 
 
-
-
-
-
-
 ## Wireframes
 ---
 ![time_map_page_render](readme/map_page.jpg)
@@ -25,22 +20,9 @@ An implementation of the the timemap software developed by FA but in the PEN sta
 ![events_index](readme/event_index.png)
 
 
-
-
-
-
-
-
-
 ## ERD STRUCTURE
 ---
 ![time_map_schema](readme/time_map_schema.jpeg)
-
-
-
-
-I may need some sort of "project" table to store all related events togther, a one to many relationship
-
 
 API utilized:
 mapbox for interactive point detection/display?
@@ -48,6 +30,60 @@ I would ingest the APIS ability to get point information and ingest that informa
 I would also use the APIS ability to dispaly information
 
 ![[map_page.jpg]]
+
+## API EXAMPLE:
+
+GETTING MOUSE COORDINATES:
+```
+mapboxgl.accessToken = 'pk.eyJ1IjoiZHJ5dXRzdW4iLCJhIjoiY2t2dTc1cDQxM21laTJwcWd6bHE3NXk0aSJ9.0_oLKZMzGfSgG7UxPJvf_w';
+const map = new mapboxgl.Map({
+container: 'map', // container id
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [-74.5, 40], // starting position
+zoom: 9 // starting zoom
+});
+ 
+map.on('mousemove', (e) => {
+document.getElementById('info').innerHTML =
+// `e.point` is the x, y coordinates of the `mousemove` event
+// relative to the top-left corner of the map.
+JSON.stringify(e.point) +
+'<br />' +
+// `e.lngLat` is the longitude, latitude geographical position of the event.
+JSON.stringify(e.lngLat.wrap());
+});
+'``
+GETTING POPUP MODALS:
+```
+const markerHeight = 50;
+const markerRadius = 10;
+const linearOffset = 25;
+const popupOffsets = {
+'top': [0, 0],
+'top-left': [0, 0],
+'top-right': [0, 0],
+'bottom': [0, -markerHeight],
+'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+'left': [markerRadius, (markerHeight - markerRadius) * -1],
+'right': [-markerRadius, (markerHeight - markerRadius) * -1]
+};
+const popup = new mapboxgl.Popup({offset: popupOffsets, className: 'my-class'})
+.setLngLat(e.lngLat)
+```
+
+ADDING POPUPS:
+```
+new mapboxgl.Popup()
+.setLngLat([0, 0])
+.setHTML("<h1>Null Island</h1>")
+.addTo(map);
+```
+
+
+
+
+
 
 ## SPRINT GOALS:
 
@@ -92,3 +128,8 @@ I would also use the APIS ability to dispaly information
 - title
 
 ## USER STORIES
+
+
+
+
+
