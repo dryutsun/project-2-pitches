@@ -53,7 +53,11 @@ JSON.stringify(e.point) +
 JSON.stringify(e.lngLat.wrap());
 });
 '``
+
+This will return geo-coordinates from the mapbox object.
+
 GETTING POPUP MODALS:
+
 ```
 const markerHeight = 50;
 const markerRadius = 10;
@@ -72,13 +76,19 @@ const popup = new mapboxgl.Popup({offset: popupOffsets, className: 'my-class'})
 .setLngLat(e.lngLat)
 ```
 
+This will create popup modals on the mapbox object.
+
+
 ADDING POPUPS:
+
 ```
 new mapboxgl.Popup()
 .setLngLat([0, 0])
 .setHTML("<h1>Null Island</h1>")
 .addTo(map);
 ```
+
+This will add popups to the map.
 
 
 
@@ -99,8 +109,8 @@ new mapboxgl.Popup()
 
 
 ## MVP:
-- [ ] I would like to have my models and route stubs created. Forms should display the correct information.
-- [ ]  I would like the map to display the "event" on the map.
+- [ ]  I would like to have my models and route stubs created. Forms should display the correct information.
+- [ ]  I would like the map to display the "event" on the map. This events should have popup modals and be represented by a certain icon.
 - [ ]  I would like some rudimentary time-related slider / timeline functionality.
 - [ ]  Ideally, I would like for the user to be able to click on the screen and get lat-lon data for data entry. This should be put into the form.
 
