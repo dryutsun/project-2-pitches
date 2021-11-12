@@ -26,7 +26,7 @@ I would like the timemap to be as open to the user as possible, i.e. it could al
 
 ## ERD STRUCTURE
 ---
-![time_map_schema](readme/time_map_schema.jpeg)
+![time_map_schema](readme/time_map_schema2.jpeg)
 
 API utilized:
 mapbox for interactive point detection/display?
