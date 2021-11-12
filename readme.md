@@ -34,7 +34,7 @@ I would use the APIS ability to get point information and use that coordination 
 I would also use the APIS ability to dispaly information on the map in order to create markers and popups.
 
 
-## API EXAMPLE:
+## API EXAMPLES:
 
 
 ### GETTING MOUSE COORDINATES:
