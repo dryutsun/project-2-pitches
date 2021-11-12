@@ -43,7 +43,7 @@ I would also use the APIS ability to dispaly information on the map in order to 
 ```javascript
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHJ5dXRzdW4iLCJhIjoiY2t2dTc1cDQxM21laTJwcWd6bHE3NXk0aSJ9.0_oLKZMzGfSgG7UxPJvf_w';
 const map = new mapboxgl.Map({
-container: 'map', // container id
+container: 'map', // container id	
 style: 'mapbox://styles/mapbox/streets-v11',
 center: [-74.5, 40], // starting position
 zoom: 9 // starting zoom
@@ -117,7 +117,7 @@ This will add popups to the map.
 ## STRETCH GOALS
 - Possible translation of relational data into graph schema to render a force directed graph into canvas (to show the node to line relationship between events and entities? No fancy stuff, just want to see if it is possible. Will not require external API call.
 - Adding more complex forms of relationships, i.e. "items" that connect people over time and space...perhaps open entiteis up to many to many relationships.
-- Impeccable design.
+- Impeccable design. I would like to prototype everything in EJS but perhaps built in React.
 
 ## OBSTACLES
 - Unforseen errors in the data schema. Might I actually need a many to many relationship, have I built the linking table to achieve this?
